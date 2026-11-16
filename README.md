@@ -1,4 +1,66 @@
+# Data Analyst Portfolio:
 # House Price Prediction: Linear Regression vs Random Forest
+
+Technical Skills: Python
+
+Soft Skills: 
+
+## Education:
+* Diploma in Digital Technology Development and Design (Level 5)
+  Data Analyst
+
+## Project: Predicting House Price with Multiple Linear Regression
+Overview
+* Objective: Build a Multiple Linear Regression (MLR) model to predict house prices (Price) using various physical and locational features.
+  
+* Dataset Features:
+  - Square_Feet: The total area of the house in square feet.
+  - Num_Bedrooms: The number of bedrooms in the house.
+  - Num_Bathrooms: The number of bathrooms in the house.
+  - Num_Floors: The number of floors in the house.
+  - Garage_Size: The size of the garage.
+  - Location_Score: A score representing the desirability of the location.
+  - Distance_to_Center: The distance (in km) to the city center.
+  - Price: The price of the house (target variable). 
+
+Step 2: Exploratory Data Analysis (EDA)
+1. Summary Statistics
+- Using df_house_price.describe() provides statistical metrics such as mean, standard deviation, minimum, and quartiles for all numerical columns.
+- For instance, the average house price is approximately $\$582,209.63$ with a standard deviation of $\$122,273.39$, ranging from a minimum of $\$276,892.47$ to a maximum of $\$960,678.27$.   
+
+2. Visualizations & Insights
+- Square Feet vs. Price (Scatter Plot):
+  - Demonstration: Visualizes the relationship between house size (Square_Feet) on the x-axis and price (Price) on the y-axis using Seaborn and Matplotlib with custom transparency (alpha=0.5).
+  - Insight: There is a moderate positive relationship between house size and price, meaning larger houses generally cost more. However, the wide spread of points indicates that square footage alone does not entirely determine price.   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 An end-to-end machine learning project that predicts house prices from property features such as size, bedrooms, bathrooms, floors, garage size, location score and distance to the city center.
 
@@ -16,6 +78,8 @@ An end-to-end machine learning project that predicts house prices from property 
 | Random Forest | $71,999 |
 
 Linear Regression performed better on this dataset (test R² ≈ 0.73), which suggests the price relationships are mostly linear.
+
+![Actual VS Predicted](actual-vs-predicted-plt.png)
 
 ## Tech stack
 Python, pandas, NumPy, scikit-learn, matplotlib, seaborn, Jupyter Notebook
