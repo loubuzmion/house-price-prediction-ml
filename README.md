@@ -1,4 +1,3 @@
-# house-price-prediction-ml
 # House Price Prediction: Linear Regression vs Random Forest
 
 An end-to-end machine learning project that predicts house prices from property features such as size, bedrooms, bathrooms, floors, garage size, location score and distance to the city center.
