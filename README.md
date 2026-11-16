@@ -1,99 +1,110 @@
 # Data Analyst Portfolio:
-## House Price Prediction: Linear Regression vs Random Forest
 
-Technical Skills: Python
+## House Price Prediction: Multiple Linear Regression vs Random Forest
 
-Soft Skills: 
+Predicting house prices from property features using **Multiple Linear Regression (MLR)** and a **Random Forest Regressor**, built in a Microsoft Fabric notebook with Python (pandas, seaborn, scikit-learn).
 
-## Education:
-* Diploma in Digital Technology Development and Design (Level 5)
-  Data Analyst
+## Project Overview
 
-## Project: Predicting House Price with Multiple Linear Regression
-Overview
-* Objective: Build a Multiple Linear Regression (MLR) model to predict house prices (Price) using various physical and locational features.
-  
-* Dataset Features:
-  - Square_Feet: The total area of the house in square feet.
-  - Num_Bedrooms: The number of bedrooms in the house.
-  - Num_Bathrooms: The number of bathrooms in the house.
-  - Num_Floors: The number of floors in the house.
-  - Garage_Size: The size of the garage.
-  - Location_Score: A score representing the desirability of the location.
-  - Distance_to_Center: The distance (in km) to the city center.
-  - Price: The price of the house (target variable). 
+The goal is to build a model that predicts the **Price** of a house from its characteristics, then compare a simple linear model against a tree-based ensemble to see which generalises better.
 
-Step 2: Exploratory Data Analysis (EDA)
-1. Summary Statistics
-- Using df_house_price.describe() provides statistical metrics such as mean, standard deviation, minimum, and quartiles for all numerical columns.
-- For instance, the average house price is approximately $\$582,209.63$ with a standard deviation of $\$122,273.39$, ranging from a minimum of $\$276,892.47$ to a maximum of $\$960,678.27$.   
+**Dataset:** 500 houses, 8 columns, no missing values.
 
-2. Visualizations & Insights
-- Square Feet vs. Price (Scatter Plot):
-  - Demonstration: Visualizes the relationship between house size (Square_Feet) on the x-axis and price (Price) on the y-axis using Seaborn and Matplotlib with custom transparency (alpha=0.5).
-  - Insight: There is a moderate positive relationship between house size and price, meaning larger houses generally cost more. However, the wide spread of points indicates that square footage alone does not entirely determine price.   
-
-![Square Feet vs Price](square-feet-vs-price.png)
-
-- Distribution of Price (Histogram with KDE):
-  - Demonstration: Plots the frequency distribution of the target variable Price using sns.histplot with 30 bins and an overlaid Kernel Density Estimate (KDE) curve.
-  - Insight: Price is roughly bell-shaped and fairly symmetric, centred at around $\$550\text{k}$ to $\$600\text{k}$. Prices range from about $\$277\text{k}$ to $\$961\text{k}$ with no extreme outliers, which suits a linear regression model.
- 
-![Distribution of Price](distribution-of-price.png)
-
-- Feature Correlation Matrix & Heatmap:
-  - Demonstration: Computes the correlation coefficients among all numerical columns using df_house_price.corr() and visualizes them using a Seaborn heatmap with a "coolwarm" colormap and numerical annotations.
-  - Insight: The correlation matrix highlights linear dependencies between features and the target variable (Price), guiding feature selection for the subsequent Multiple Linear Regression model.
- 
-![Correlation Matrix & Heatmap](correlation-heatmap.png)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-An end-to-end machine learning project that predicts house prices from property features such as size, bedrooms, bathrooms, floors, garage size, location score and distance to the city center.
-
-## What I did
-- Loaded and checked a 500-row housing dataset (no missing values)
-- Ran exploratory data analysis: summary statistics, scatter plots, price histogram, pairplot and correlation heatmap
-- Split the data 80/20 into train and test sets
-- Trained a Multiple Linear Regression model and a Random Forest Regressor (200 trees)
-- Compared both models using RMSE and actual-vs-predicted plots
-
-## Results
-| Model | RMSE |
+| Feature | Description |
 |---|---|
-| Multiple Linear Regression | $63,952 |
-| Random Forest | $71,999 |
+| `Square_Feet` | Total area of the house |
+| `Num_Bedrooms` | Number of bedrooms |
+| `Num_Bathrooms` | Number of bathrooms |
+| `Num_Floors` | Number of floors |
+| `Garage_Size` | Size of the garage |
+| `Location_Score` | Desirability score of the location |
+| `Distance_to_Center` | Distance (km) to the city centre |
+| `Price` | **Target variable** |
 
-Linear Regression performed better on this dataset (test R² ≈ 0.73), which suggests the price relationships are mostly linear.
+## Tools & Libraries
 
-![Actual VS Predicted](actual-vs-predicted-plt.png)
+Python 3.11, pandas, NumPy, Matplotlib, Seaborn, scikit-learn, Azure Blob Storage SDK, Microsoft Fabric notebooks (with MLflow autologging).
 
-## Tech stack
-Python, pandas, NumPy, scikit-learn, matplotlib, seaborn, Jupyter Notebook
+## Approach
 
-## Files
-- `house_price_prediction.ipynb`: full analysis and modelling
-- `house_sales_prediction.csv`: dataset
+### 1. Data loading and inspection
+- Loaded the CSV from Azure Blob Storage into a DataFrame (`df_house_price`).
+- Checked the first rows, data types and nulls: 500 rows, all columns numeric, **no missing values**.
+
+### 2. Exploratory Data Analysis (EDA)
+- **Summary statistics** (`describe()`): prices range from about $277k to $961k, with a mean of about $582k.
+- **Scatter plot (Square Feet vs Price)**
+- **Histogram (Price distribution)**
+- **Correlation matrix / heatmap**
+
+ 
+![Square Feet vs Price](square-feet-vs-price.png)
+![Price Distribution](distribution-of-price.png)
+![Correlation Heatmap](correlation-matrix-heatmap.png)
+
+### 3. Modelling
+1. Split the data into features `X` (all columns except `Price`) and target `y` (`Price`).
+2. Train/test split: **80% / 20%** (400 train, 100 test), `random_state=42`.
+3. **Model 1:** `LinearRegression` (MLR).
+4. **Model 2:** `RandomForestRegressor` with 200 trees (`n_estimators=200`, `random_state=42`).
+5. Evaluated both on the held-out test set using **RMSE**, and plotted actual vs predicted prices against the ideal `y = x` line.
+
+> 📊 *Add your images here:*
+> `![MLR Actual vs Predicted](images/mlr_actual_vs_predicted.png)`
+> `![Random Forest Actual vs Predicted](images/rf_actual_vs_predicted.png)`
+
+## Key Findings
+
+### EDA insights
+- **Price is roughly bell-shaped and fairly symmetric**, centred around $550k–$600k with no extreme outliers, which suits linear regression.
+- **Square_Feet (r ≈ 0.56) and Num_Bedrooms (r ≈ 0.56)** have the strongest correlations with price.
+- **Num_Floors (≈ 0.18) and Num_Bathrooms (≈ 0.16)** show weak positive relationships.
+- **Location_Score, Garage_Size and Distance_to_Center** have correlations close to zero with price.
+- Features are **barely correlated with each other**, so there is little multicollinearity and each feature contributes independent information.
+
+### Model results
+
+| Model | Test RMSE |
+|---|---|
+| **Multiple Linear Regression** | **$63,952** |
+| Random Forest (200 trees) | $72,013 |
+
+**MLR performed better**, with about $8,000 lower RMSE on the test set.
+
+### Why MLR won
+- The relationships in this dataset are largely **linear** (e.g. size and bedrooms vs price), which a linear model captures cleanly.
+- The Random Forest shows signs of **overfitting**: the MLflow training logs show a training RMSE of about $26k (R² ≈ 0.95) for the forest versus a test RMSE of about $72k. MLR's training RMSE was about $61k (R² ≈ 0.75), close to its test error, which means it generalises consistently.
+- With only 400 training rows, a flexible tree ensemble has limited data to learn from.
+
+### Prediction behaviour (from the plots)
+- Both models track the general trend: larger or better houses get higher predicted prices.
+- Both **tend to overestimate cheaper homes (< $400k) and underestimate expensive homes (> $700k)**, a "pull toward the average" typical of regression models.
+- Predictions are tightest in the mid-price range ($500k–$650k).
+- Individual errors vary widely: some predictions are within a few hundred dollars, others miss by $70k–$100k.
+
+## Limitations
+- A **single train/test split** was used, so the RMSE comparison could change with a different split.
+- Only RMSE was reported on the test set (no R², MAE or residual analysis).
+- Random Forest was run with **default hyperparameters** (apart from the number of trees) and was not tuned.
+- The dataset is small (500 rows) and appears to be synthetic or simplified, so results may not transfer to real housing markets.
+
+## Possible Improvements
+- **Cross-validation** (e.g. 5-fold) for a more reliable model comparison.
+- **Tune the Random Forest** (`max_depth`, `min_samples_leaf`, `max_features`, `n_estimators`) with `GridSearchCV` or `RandomizedSearchCV` to reduce overfitting.
+- **Try other models:** Ridge/Lasso regression (regularisation), Gradient Boosting, XGBoost or LightGBM.
+- **Feature engineering:** interaction terms (e.g. bedrooms × square feet), price per square foot, or polynomial features; consider dropping features with near-zero correlation.
+- **Check feature importance** (Random Forest importances, MLR coefficients) to explain what drives price.
+- **Residual analysis:** plot residuals vs predicted values to understand the under/over-estimation at the price extremes, and test a log transform of `Price`.
+- **Report more metrics:** R², MAE and MAPE alongside RMSE.
+- **More data** and real-world features (property age, condition, neighbourhood) would likely improve accuracy.
+
+## Conclusion
+
+On this dataset, a simple **Multiple Linear Regression model outperformed a default Random Forest** (RMSE $63,952 vs $72,013). The data is dominated by linear relationships, and the Random Forest overfits the small training set. The best next steps are cross-validation, hyperparameter tuning and feature engineering to push both models further.
+
+## How to Run
+
+1. Clone this repository.
+2. Install dependencies: `pip install pandas numpy matplotlib seaborn scikit-learn azure-storage-blob`
+3. Provide the dataset (`house_sales_prediction.csv`) locally, or set your own Azure Blob Storage credentials via **environment variables** (never hard-code them in the notebook).
+4. Open `Mission 4 - Predicting House Price with Multiple Linear Regression.ipynb` and run all cells.
