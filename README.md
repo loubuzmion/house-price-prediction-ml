@@ -1,5 +1,5 @@
 # Data Analyst Portfolio:
-# House Price Prediction: Linear Regression vs Random Forest
+## House Price Prediction: Linear Regression vs Random Forest
 
 Technical Skills: Python
 
@@ -39,8 +39,13 @@ Step 2: Exploratory Data Analysis (EDA)
   - Demonstration: Plots the frequency distribution of the target variable Price using sns.histplot with 30 bins and an overlaid Kernel Density Estimate (KDE) curve.
   - Insight: Price is roughly bell-shaped and fairly symmetric, centred at around $\$550\text{k}$ to $\$600\text{k}$. Prices range from about $\$277\text{k}$ to $\$961\text{k}$ with no extreme outliers, which suits a linear regression model.
  
-![Square Feet vs Price](square-feet-vs-price.png)
+![Distribution of Price](distribution-of-price.png)
 
+- Feature Correlation Matrix & Heatmap:
+  - Demonstration: Computes the correlation coefficients among all numerical columns using df_house_price.corr() and visualizes them using a Seaborn heatmap with a "coolwarm" colormap and numerical annotations.
+  - Insight: The correlation matrix highlights linear dependencies between features and the target variable (Price), guiding feature selection for the subsequent Multiple Linear Regression model.
+ 
+![Correlation Matrix & Heatmap](correlation-heatmap.png)
 
 
 
