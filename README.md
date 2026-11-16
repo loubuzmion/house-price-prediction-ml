@@ -33,9 +33,13 @@ Step 2: Exploratory Data Analysis (EDA)
   - Demonstration: Visualizes the relationship between house size (Square_Feet) on the x-axis and price (Price) on the y-axis using Seaborn and Matplotlib with custom transparency (alpha=0.5).
   - Insight: There is a moderate positive relationship between house size and price, meaning larger houses generally cost more. However, the wide spread of points indicates that square footage alone does not entirely determine price.   
 
+![Square Feet vs Price](square-feet-vs-price.png)
 
-
-
+- Distribution of Price (Histogram with KDE):
+  - Demonstration: Plots the frequency distribution of the target variable Price using sns.histplot with 30 bins and an overlaid Kernel Density Estimate (KDE) curve.
+  - Insight: Price is roughly bell-shaped and fairly symmetric, centred at around $\$550\text{k}$ to $\$600\text{k}$. Prices range from about $\$277\text{k}$ to $\$961\text{k}$ with no extreme outliers, which suits a linear regression model.
+ 
+![Square Feet vs Price](square-feet-vs-price.png)
 
 
 
