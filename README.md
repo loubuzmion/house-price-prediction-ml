@@ -49,9 +49,8 @@ Python 3.11, pandas, NumPy, Matplotlib, Seaborn, scikit-learn, Azure Blob Storag
 4. **Model 2:** `RandomForestRegressor` with 200 trees (`n_estimators=200`, `random_state=42`).
 5. Evaluated both on the held-out test set using **RMSE**, and plotted actual vs predicted prices against the ideal `y = x` line.
 
-> 📊 *Add your images here:*
-> `![MLR Actual vs Predicted](images/mlr_actual_vs_predicted.png)`
-> `![Random Forest Actual vs Predicted](images/rf_actual_vs_predicted.png)`
+![MLR Actual vs Predicted](actual-vs-predicted-plt.png)
+![Random Forest Actual vs Predicted](actual-vs-predicted-random.png)
 
 ## Key Findings
 
