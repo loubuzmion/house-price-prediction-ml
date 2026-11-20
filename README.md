@@ -1,6 +1,4 @@
-# Data Analyst Portfolio:
-
-## House Price Prediction: Multiple Linear Regression vs Random Forest
+# House Price Prediction: Multiple Linear Regression vs Random Forest
 
 Predicting house prices from property features using **Multiple Linear Regression (MLR)** and a **Random Forest Regressor**, built in a Microsoft Fabric notebook with Python (pandas, seaborn, scikit-learn).
 
