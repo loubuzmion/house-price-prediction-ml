@@ -23,7 +23,7 @@ The goal is to build a model that predicts the **Price** of a house from its cha
 
 ## Tools & Libraries
 
-Python 3.11, pandas, NumPy, Matplotlib, Seaborn, scikit-learn, Azure Blob Storage SDK, Microsoft Fabric notebooks (with MLflow autologging).
+Python 3.15, pandas, NumPy, Matplotlib, Seaborn, scikit-learn, Azure Blob Storage SDK, Microsoft Fabric notebooks (with MLflow autologging).
 
 ## Approach
 
