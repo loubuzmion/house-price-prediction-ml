@@ -81,29 +81,6 @@ Python 3.15, pandas, NumPy, Matplotlib, Seaborn, scikit-learn, Azure Blob Storag
 - Predictions are tightest in the mid-price range ($500k–$650k).
 - Individual errors vary widely: some predictions are within a few hundred dollars, others miss by $70k–$100k.
 
-## Limitations
-- A **single train/test split** was used, so the RMSE comparison could change with a different split.
-- Only RMSE was reported on the test set (no R², MAE or residual analysis).
-- Random Forest was run with **default hyperparameters** (apart from the number of trees) and was not tuned.
-- The dataset is small (500 rows) and appears to be synthetic or simplified, so results may not transfer to real housing markets.
-
-## Possible Improvements
-- **Cross-validation** (e.g. 5-fold) for a more reliable model comparison.
-- **Tune the Random Forest** (`max_depth`, `min_samples_leaf`, `max_features`, `n_estimators`) with `GridSearchCV` or `RandomizedSearchCV` to reduce overfitting.
-- **Try other models:** Ridge/Lasso regression (regularisation), Gradient Boosting, XGBoost or LightGBM.
-- **Feature engineering:** interaction terms (e.g. bedrooms × square feet), price per square foot, or polynomial features; consider dropping features with near-zero correlation.
-- **Check feature importance** (Random Forest importances, MLR coefficients) to explain what drives price.
-- **Residual analysis:** plot residuals vs predicted values to understand the under/over-estimation at the price extremes, and test a log transform of `Price`.
-- **Report more metrics:** R², MAE and MAPE alongside RMSE.
-- **More data** and real-world features (property age, condition, neighbourhood) would likely improve accuracy.
-
 ## Conclusion
 
 On this dataset, a simple **Multiple Linear Regression model outperformed a default Random Forest** (RMSE $63,952 vs $72,013). The data is dominated by linear relationships, and the Random Forest overfits the small training set. The best next steps are cross-validation, hyperparameter tuning and feature engineering to push both models further.
-
-## How to Run
-
-1. Clone this repository.
-2. Install dependencies: `pip install pandas numpy matplotlib seaborn scikit-learn azure-storage-blob`
-3. Provide the dataset (`house_sales_prediction.csv`) locally, or set your own Azure Blob Storage credentials via **environment variables** (never hard-code them in the notebook).
-4. Open `Mission 4 - Predicting House Price with Multiple Linear Regression.ipynb` and run all cells.
