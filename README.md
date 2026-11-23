@@ -36,9 +36,12 @@ Python 3.15, pandas, NumPy, Matplotlib, Seaborn, scikit-learn, Azure Blob Storag
 - **Histogram (Price distribution)**
 - **Correlation matrix / heatmap**
 
- 
+
+_Square Feet vs Price_
 ![Square Feet vs Price](square-feet-vs-price.png)
+_Price Distribution_
 ![Price Distribution](distribution-of-price.png)
+_Correlation Matrix / Heatmap_
 ![Correlation Heatmap](correlation-matrix-heatmap.png)
 
 ### 3. Modelling
@@ -48,7 +51,9 @@ Python 3.15, pandas, NumPy, Matplotlib, Seaborn, scikit-learn, Azure Blob Storag
 4. **Model 2:** `RandomForestRegressor` with 200 trees (`n_estimators=200`, `random_state=42`).
 5. Evaluated both on the held-out test set using **RMSE**, and plotted actual vs predicted prices against the ideal `y = x` line.
 
+_Linear Regression_
 ![MLR Actual vs Predicted](actual-vs-predicted-plt.png)
+_Random Forest Regressor_
 ![Random Forest Actual vs Predicted](actual-vs-predicted-random.png)
 
 ## Key Findings
